@@ -10,6 +10,9 @@ docking station | release
 
 Objects | Messages
 ------------- | -------------
-person | use_bike
-docking station | release_bike
-person | see_if_working
+Person |
+DockingStation | release_bike
+Bike | see_if_working
+
+Bike <-- see_if_working # => true or false
+DockingStation <-- release_bike # => new Bike 
