@@ -9,7 +9,6 @@ docking station | release
  | see
 
 Objects | Messages
-------------- | -------------
 person | use_bike
 docking station | release_bike
 ------------- | -------------
