@@ -1,5 +1,5 @@
 class Bike
-  def woke?
+  def working?
     true
   end
 end
