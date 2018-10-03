@@ -9,6 +9,7 @@ class DockingStation
   end
 
   def dock(bike)
+    raise "This station is full" unless @current_bike == nil
     @current_bike = bike
   end
 end
