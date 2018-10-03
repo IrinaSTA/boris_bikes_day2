@@ -5,7 +5,7 @@ describe DockingStation do
   it { is_expected.to respond_to :release_bike }
   it { is_expected.to respond_to(:dock).with(1).argument }
 
-    it 'returns a bike' do
+    it 'returns a working bike' do
       bike = Bike.new
       subject.dock(bike)
       expect(subject.release_bike).to be_working
@@ -37,6 +37,10 @@ describe DockingStation do
 
     it 'allows user to read the capacity when no capacity has been specified' do
       expect(subject.capacity).to eq(DockingStation::DEFAULT_CAPACITY)
+    end
+
+    it 'report a bike as broken' do
+      expect { subject.dock(Bike.new, false) }.to_not raise_error
     end
 
 end
