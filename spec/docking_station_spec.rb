@@ -14,7 +14,7 @@ describe DockingStation do
     it 'look at current bike' do
       bike = Bike.new
       subject.dock(bike)
-      expect(subject.current_bike).to eq bike
+      expect(subject.current_bike.pop).to eq bike
     end
 
     it 'raises an error when no bikes' do
@@ -22,10 +22,8 @@ describe DockingStation do
     end
 
     it 'raises an error when it\'s full' do
-      bike = Bike.new
-      subject.dock(bike)
-      bike2 = Bike.new
-      expect { subject.dock(bike2)}.to raise_error("This station is full")
+      20.times { subject.dock Bike.new }
+      expect { subject.dock(Bike.new) }.to raise_error("This station is full")
     end
 
 end
