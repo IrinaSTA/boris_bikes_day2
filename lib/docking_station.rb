@@ -2,19 +2,19 @@ require_relative 'bike'
 require 'pry'
 
 class DockingStation
-  attr_accessor :current_bike
+  attr_accessor :bikes
 
   def initialize
-    @current_bike = []
+    @bikes = []
   end
 
   def release_bike
-    raise "No bike available" unless @current_bike.size > 0
-    @current_bike.pop
+    fail "No bike available" if @bikes.empty?
+    @bikes.pop
   end
 
   def dock(bike)
-    raise "This station is full" unless @current_bike.size < 20
-    @current_bike.push(bike)
+    fail "This station is full" if @bikes.size >= 20
+    @bikes.push(bike)
   end
 end

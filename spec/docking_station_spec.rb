@@ -14,7 +14,7 @@ describe DockingStation do
     it 'look at current bike' do
       bike = Bike.new
       subject.dock(bike)
-      expect(subject.current_bike.pop).to eq bike
+      expect(subject.bikes.pop).to eq bike
     end
 
     it 'raises an error when no bikes' do
