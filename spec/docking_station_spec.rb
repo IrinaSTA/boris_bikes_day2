@@ -14,7 +14,7 @@ describe DockingStation do
     it 'look at current bike' do
       bike = Bike.new
       subject.dock(bike)
-      expect(subject.bikes.pop).to eq bike
+      expect(subject.release_bike).to eq bike
     end
 
     it 'raises an error when no bikes' do
@@ -22,8 +22,21 @@ describe DockingStation do
     end
 
     it 'raises an error when it\'s full' do
-      DockingStation::DEFAULT_CAPACITY.times { subject.dock Bike.new }
+      subject.capacity.times { subject.dock Bike.new }
       expect { subject.dock(Bike.new) }.to raise_error("This station is full")
+    end
+
+    it 'can create a station with user specified capacity' do
+      ds = DockingStation.new(30)
+      expect(ds.capacity).to eq(30)
+    end
+
+    it 'can create a station with user specified capacity' do
+      expect{ DockingStation.new(30) }.to_not raise_error
+    end
+
+    it 'allows user to read the capacity when no capacity has been specified' do
+      expect(subject.capacity).to eq(DockingStation::DEFAULT_CAPACITY)
     end
 
 end
