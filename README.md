@@ -1,5 +1,5 @@
-# Boris Bike Model #
+# boris bikes #
 
-This project is a model of the Boris Bikes that were introduced by TFL.
+This was a project for Makers to learn Ruby and TDD.
 
 # How to Use #
