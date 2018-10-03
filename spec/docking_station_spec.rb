@@ -6,13 +6,13 @@ describe DockingStation do
   it { is_expected.to respond_to(:dock).with(1).argument }
 
     it 'returns a working bike' do
-      bike = Bike.new
+      bike = double(:bike)
       subject.dock(bike)
       expect(subject.release_bike).to be_working
     end
 
     it 'look at current bike' do
-      bike = Bike.new
+      bike = double(:bike)
       subject.dock(bike)
       expect(subject.release_bike).to eq bike
     end
@@ -22,8 +22,8 @@ describe DockingStation do
     end
 
     it 'raises an error when it\'s full' do
-      subject.capacity.times { subject.dock Bike.new }
-      expect { subject.dock(Bike.new) }.to raise_error("This station is full")
+      subject.capacity.times { subject.dock double(:bike) }
+      expect { subject.dock(double(:bike)) }.to raise_error("This station is full")
     end
 
     it 'can create a station with user specified capacity' do
@@ -40,7 +40,7 @@ describe DockingStation do
     end
 
     it 'report a bike as broken' do
-      expect { subject.dock(Bike.new, false) }.to_not raise_error
+      expect { subject.dock(double(:bike), false) }.to_not raise_error
     end
 
 end
