@@ -3,6 +3,7 @@ require 'pry'
 
 class DockingStation
   attr_reader :capacity
+  attr_accessor :bikes
 
   DEFAULT_CAPACITY = 20
 
@@ -28,11 +29,11 @@ class DockingStation
 
   def broken_bikes
     broken_bikes = @bikes.select {|bike| !bike.working?}
+    @bikes = @bikes - broken_bikes
+    broken_bikes
   end
 
   private
-
-  attr_reader :bikes
 
   def full?
     @bikes.size >= DEFAULT_CAPACITY

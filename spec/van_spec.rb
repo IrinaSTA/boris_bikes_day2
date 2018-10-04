@@ -21,4 +21,16 @@ describe Van do
     expect(Garage.bikes[0]).to be_an_instance_of(Bike)
   end
 
+  it 'Garage fixes the bikes' do
+    @van.collect(@ds1)
+    expect(Garage.bikes[0]).to be_working
+  end
+
+  it 'distributes fixed bikes to docking station' do
+    @ds2 = DockingStation.new
+    @van.collect(@ds1)
+    @van.distribute(@ds2)
+    expect(@ds2.bikes[0]).to be_an_instance_of(Bike)
+  end
+
 end

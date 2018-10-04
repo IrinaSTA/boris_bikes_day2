@@ -7,4 +7,9 @@ class Van
     Garage.store(collected_bikes)
   end
 
+  def distribute(docking_station)
+    bikes = Garage.release_bikes
+    docking_station.bikes = docking_station.bikes + bikes
+  end
+
 end
