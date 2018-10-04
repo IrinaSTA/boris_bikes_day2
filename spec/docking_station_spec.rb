@@ -50,4 +50,11 @@ describe DockingStation do
       expect { subject.dock(bike, false) }.to_not raise_error
     end
 
+    it 'can return its broken bikes' do
+      ds = DockingStation.new
+      bike1 = Bike.new
+      ds.dock(bike1, false)
+      expect(ds.broken_bikes[0]).to eq bike1
+    end
+
 end

@@ -26,6 +26,10 @@ class DockingStation
     @bikes.push(bike)
   end
 
+  def broken_bikes
+    broken_bikes = @bikes.select {|bike| !bike.working?}
+  end
+
   private
 
   attr_reader :bikes
